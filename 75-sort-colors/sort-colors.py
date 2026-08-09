@@ -3,24 +3,19 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        left = 0
-        right = len(nums) - 1
-        i = 0
+        low,mid,high = 0, 0 , len(nums)-1
 
-        while i<=right:
-            if nums[i] == 1:
-                i+=1
-            elif nums[i] == 0:
-                temp = nums[i]
-                nums[i] = nums[left]
-                nums[left] = temp
-                i+=1
-                left+=1
+        while mid<= high:
+            if nums[mid] == 0:
+                nums[low] , nums[mid] = nums[mid], nums[low]
+                low+=1
+                mid+=1
+
+            elif nums[mid] == 1:
+                mid+=1
             else:
-                temp = nums[i]
-                nums[i] = nums[right]
-                nums[right] = temp
-                right -= 1
+                nums[mid], nums[high] = nums[high], nums[mid]
+                high -= 1
 
 
 
